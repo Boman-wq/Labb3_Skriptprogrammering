@@ -22,6 +22,8 @@ class GetMovie:
             with open("saved_movies.json") as file:
                 data = json.load(file)
                 temp = data["save"]
+                if len(temp) == 5:
+                    temp.pop(0)
                 temp.append(y)
             with open ("saved_movies.json", "w") as file:
                 json.dump(data, file, indent=4)
@@ -44,7 +46,7 @@ class MovieInfo:
         print(f"Imdb score: {self.imdb_rating}\n")
         print(f"Regissörer: {self.directors}")
         print(f"{self.runtime} | {self.genre} | {self.type}")
-        print(f"{self.plot}")
+        print(f"Plot: {self.plot}")
 
 def search_menu():
     user_search = input("Vilken film vill du söka på?\n")
